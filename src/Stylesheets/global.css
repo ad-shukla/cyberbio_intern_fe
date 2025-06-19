@@ -1,0 +1,26 @@
+@import './colors.css';
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: var(--husk);
+}
+
+:root {
+    line-height: 1.5;
+    font-weight: 400;
+
+    --banner-height: min(15vh, 80px);
+    --font: 'Lucida Calligraphy';
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        background-color: #ffffff;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        background-color: #242424;
+    }
+}

@@ -1,0 +1,35 @@
+@import './global.css';
+@import './colors.css';
+
+.banner {
+    padding-inline: 30px;
+    height: var(--banner-height);
+    background-color: var(--musk);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    color: var(--crust);
+    font-family: var(--font);
+
+    border: 0;
+    background: transparent;
+}
+
+.buttonsSmall { display: flex;
+    * {
+        font-size: 14pt;
+        margin-inline: 5px;
+        padding: 5px;
+        padding-inline: 10px;
+        border-radius: 20px;
+    }
+    *:hover { background: var(--flame); }
+}
+
+.spacer {
+    width: 100%;
+    flex-shrink: 1;
+}
