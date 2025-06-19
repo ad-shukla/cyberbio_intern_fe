@@ -1,0 +1,51 @@
+@import '../colors.css';
+
+.RegistrationParent, .Registration, .formEntry {
+    display: flex;
+    flex-direction: column;
+}
+
+.Registration, .submitButton, label {
+    color: var(--crust);
+}
+
+label, .formButtons {
+    display: flex;
+    justify-content: space-between;
+    input {
+        margin-left: 10px;
+        height: min-content;
+    }
+    * {
+        font-size: 12pt;
+    }
+}
+
+.Registration {
+    position: relative;
+    top:15vh;
+
+    padding: 1.5%;
+    padding-inline: 2.5%;
+    
+    border: 5px var(--foreground);
+    border-style: groove;
+    border-radius: 10px;
+    white-space: pre;
+    align-self: center;
+    justify-content: center;
+
+    background-color: var(--musk);
+}
+
+.submitButton {
+    font-size: 14pt;
+    margin-inline: 5px;
+    padding: 5px;
+    padding-inline: 10px;
+    border-radius: 20px;
+    width:min-content;
+    align-self: flex-end;
+
+    &:hover { background: var(--flame); }
+}
