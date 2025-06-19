@@ -1,0 +1,31 @@
+import './Stylesheets/global.css'
+import App from './App.tsx'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Route, Routes } from "react-router"
+
+import Login from './Pages/Login.tsx'
+import Invalid from './Pages/Invalid.tsx'
+import Landing from './Pages/Landing.tsx'
+import Notebook from './Pages/Notebook.tsx'
+import Calendar from './Pages/Calendar.tsx'
+import Contacts from './Pages/Contacts.tsx'
+import Dashboard from './Pages/Dashboard.tsx'
+import Registration from './Pages/Registration.tsx'
+
+createRoot(document.getElementById('root')!).render(
+    <BrowserRouter>
+        <Routes>
+            <Route path="*" Component={Invalid} />
+            <Route path="/" Component={App}>
+                <Route index={true} Component={Landing} />
+                <Route path="Registration" Component={Registration} />
+                <Route path="Login" Component={Login} />
+                
+                <Route path="Dashboard" Component={Dashboard} />
+                <Route path="Calendar" Component={Calendar} />
+                <Route path="Contacts" Component={Contacts} />
+                <Route path="Notebook" Component={Notebook} />
+            </Route>
+        </Routes>
+    </BrowserRouter>
+)
