@@ -1,6 +1,7 @@
 @import '../colors.css';
 @import '../global.css';
 
+/* Calendar page styles */
 .calendar-container {
     min-height: 100vh;
     padding-top: var(--banner-height);
