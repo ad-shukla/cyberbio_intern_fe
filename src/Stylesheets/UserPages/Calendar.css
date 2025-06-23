@@ -1,0 +1,111 @@
+@import '../colors.css';
+@import '../global.css';
+
+.calendar-container {
+    min-height: 100vh;
+    padding-top: var(--banner-height);
+    background: var(--bg-secondary);
+    padding: var(--banner-height) var(--spacing-6) var(--spacing-6);
+}
+
+.calendar-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.appointment-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+
+.appointment-item {
+    background: var(--bg-card);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.appointment-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+}
+
+.appointment-title {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.appointment-time {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.appointment-actions {
+    display: flex;
+    gap: var(--spacing-2);
+}
+
+.btn-message {
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--primary-green);
+    color: var(--white);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+}
+
+.btn-message:hover {
+    opacity: 0.8;
+}
+
+.btn-reschedule {
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--accent-red);
+    color: var(--white);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+}
+
+.btn-reschedule:hover {
+    opacity: 0.8;
+}
+
+.btn-cancel {
+    padding: var(--spacing-2) var(--spacing-4);
+    background: var(--accent-red);
+    color: var(--white);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+}
+
+.btn-cancel:hover {
+    opacity: 0.8;
+}
+
+.appointment-slot {
+    background: var(--bg-card);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    height: 80px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .appointment-item {
+        flex-direction: column;
+        gap: var(--spacing-3);
+        align-items: flex-start;
+    }
+    
+    .appointment-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

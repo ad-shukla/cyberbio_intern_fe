@@ -1,0 +1,119 @@
+@import '../colors.css';
+@import '../global.css';
+
+.find-professionals-container {
+    min-height: 100vh;
+    padding-top: var(--banner-height);
+    background: var(--bg-secondary);
+    padding: var(--banner-height) var(--spacing-6) var(--spacing-6);
+}
+
+.find-professionals-layout {
+    display: flex;
+    gap: var(--spacing-4);
+    max-width: 1000px;
+    margin: 0 auto;
+    height: calc(100vh - var(--banner-height) - var(--spacing-12));
+}
+
+.professionals-sidebar {
+    width: 250px;
+    background: var(--bg-card);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-4);
+}
+
+.professionals-header {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-4);
+    padding-bottom: var(--spacing-2);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.search-section {
+    margin-bottom: var(--spacing-4);
+}
+
+.search-item {
+    padding: var(--spacing-3);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.search-item:hover {
+    background: var(--gray-100);
+}
+
+.search-icon {
+    font-size: var(--font-size-sm);
+}
+
+.professionals-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.professional-item {
+    padding: var(--spacing-3);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-height: 40px;
+}
+
+.professional-item:hover {
+    background: var(--gray-100);
+}
+
+.professionals-main {
+    flex: 1;
+    background: var(--bg-card);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.matching-header {
+    padding: var(--spacing-4);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.matching-title {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-1);
+}
+
+.matching-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.matching-content {
+    flex: 1;
+    padding: var(--spacing-4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .find-professionals-layout {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .professionals-sidebar {
+        width: 100%;
+    }
+}
