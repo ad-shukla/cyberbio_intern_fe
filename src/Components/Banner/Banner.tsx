@@ -9,6 +9,9 @@ export default function Banner() {
 
     const isActive = (path: string) => location.pathname === path;
 
+    // Get profile picture from localStorage if available
+    const profilePicture = localStorage.getItem('profilePicture');
+
     return (
         <div className='banner'>
             <button 
@@ -75,14 +78,24 @@ export default function Banner() {
                 ) : (
                     <div className="user-menu">
                         <div className="user-avatar">
-                            {Status.UserType === UserTypes.User ? 'U' : 
-                             Status.UserType === UserTypes.Therapist ? 'T' : 'A'}
+                            {profilePicture ? (
+                                <img src={profilePicture} alt="Profile" style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    borderRadius: '50%',
+                                    objectFit: 'cover'
+                                }} />
+                            ) : (
+                                Status.UserType === UserTypes.User ? 'U' : 
+                                Status.UserType === UserTypes.Therapist ? 'T' : 'A'
+                            )}
                         </div>
                         <button 
                             className="logout-button" 
                             onClick={() => {
                                 Status.loggedIn = false; 
                                 Status.UserType = UserTypes.None; 
+                                localStorage.removeItem('profilePicture');
                                 nav("/");
                             }}
                         >

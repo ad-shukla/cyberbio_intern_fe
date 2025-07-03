@@ -17,6 +17,8 @@ export default function Registration() {
     const [currentSection, setCurrentSection] = useState(0);
     const [passwordStrength, setPasswordStrength] = useState(0);
     const [selectedUserType, setSelectedUserType] = useState<number | null>(null);
+    const [profilePicture, setProfilePicture] = useState<string | null>(null);
+    const [showTermsModal, setShowTermsModal] = useState(false);
     
     const strengthTarget = 100;
     const Data = new Map<String, any>();
@@ -77,10 +79,31 @@ export default function Registration() {
         return score >= strengthTarget;
     }
 
+    function handleProfilePictureChange(event: React.ChangeEvent<HTMLInputElement>) {
+        const file = event.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setProfilePicture(e.target?.result as string);
+                Data.set('profilePicture', e.target?.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
     function submit() {
+        setShowTermsModal(true);
+    }
+
+    function acceptTerms() {
         JSON.stringify(Data);
         Status.loggedIn = true;
+        setShowTermsModal(false);
         nav("/Dashboard");
+    }
+
+    function declineTerms() {
+        setShowTermsModal(false);
     }
 
     return (
@@ -109,42 +132,78 @@ export default function Registration() {
                 <div className='form-section'>
                     {currentSection === Section.Login && (
                         <form action={applyFormData}>
-                            <div className='form-group'>
-                                <label htmlFor="email" className='form-label'>Email Address</label>
-                                <input
-                                    className='form-input'
-                                    name="email"
-                                    id="email"
-                                    autoComplete="email"
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    required
-                                />
+                            <div className='form-grid'>
+                                <div className='form-column'>
+                                    <div className='form-group'>
+                                        <label htmlFor="email" className='form-label'>Email Address</label>
+                                        <input
+                                            className='form-input'
+                                            name="email"
+                                            id="email"
+                                            autoComplete="email"
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                                
+                                <div className='form-column'>
+                                    <div className='form-group'>
+                                        <label htmlFor="password" className='form-label'>Password</label>
+                                        <input
+                                            className='form-input'
+                                            name="password"
+                                            id="password"
+                                            type="password"
+                                            autoComplete="new-password"
+                                            placeholder="Create a strong password"
+                                            minLength={10}
+                                            required
+                                            onChange={(e) => checkPasswordStrength(e.currentTarget.value)}
+                                        />
+                                        <div className='password-strength'>
+                                            <div className='strength-label'>
+                                                <span>Password Strength</span>
+                                                <span>{passwordStrength}/{strengthTarget}</span>
+                                            </div>
+                                            <progress 
+                                                className='strength-progress' 
+                                                max={strengthTarget} 
+                                                value={passwordStrength}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div className='form-group'>
-                                <label htmlFor="password" className='form-label'>Password</label>
-                                <input
-                                    className='form-input'
-                                    name="password"
-                                    id="password"
-                                    type="password"
-                                    autoComplete="new-password"
-                                    placeholder="Create a strong password"
-                                    minLength={10}
-                                    required
-                                    onChange={(e) => checkPasswordStrength(e.currentTarget.value)}
-                                />
-                                <div className='password-strength'>
-                                    <div className='strength-label'>
-                                        <span>Password Strength</span>
-                                        <span>{passwordStrength}/{strengthTarget}</span>
+                            <div className='profile-picture-section'>
+                                <div className='profile-picture-upload'>
+                                    <div className='profile-picture-preview'>
+                                        {profilePicture ? (
+                                            <img src={profilePicture} alt="Profile preview" />
+                                        ) : (
+                                            <div className='profile-picture-placeholder'>
+                                                <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                                </svg>
+                                            </div>
+                                        )}
                                     </div>
-                                    <progress 
-                                        className='strength-progress' 
-                                        max={strengthTarget} 
-                                        value={passwordStrength}
+                                    <input
+                                        type="file"
+                                        id="profilePicture"
+                                        className='profile-picture-input'
+                                        accept="image/*"
+                                        onChange={handleProfilePictureChange}
                                     />
+                                    <button
+                                        type="button"
+                                        className='profile-picture-button'
+                                        onClick={() => document.getElementById('profilePicture')?.click()}
+                                    >
+                                        {profilePicture ? 'Change Photo' : 'Add Profile Photo (Optional)'}
+                                    </button>
                                 </div>
                             </div>
                             
@@ -158,53 +217,59 @@ export default function Registration() {
 
                     {currentSection === Section.Name && (
                         <form action={applyFormData}>
-                            <div className='form-group'>
-                                <label htmlFor="firstname" className='form-label'>First Name</label>
-                                <input
-                                    className='form-input'
-                                    name="firstname"
-                                    id="firstname"
-                                    autoComplete="given-name"
-                                    placeholder="Enter your first name"
-                                    required
-                                />
-                            </div>
-                            
-                            <div className='form-group'>
-                                <label htmlFor="middlename" className='form-label'>Middle Name (Optional)</label>
-                                <input
-                                    className='form-input'
-                                    name="middlename"
-                                    id="middlename"
-                                    autoComplete="additional-name"
-                                    placeholder="Enter your middle name"
-                                />
-                            </div>
-                            
-                            <div className='form-group'>
-                                <label htmlFor="lastname" className='form-label'>Last Name</label>
-                                <input
-                                    className='form-input'
-                                    name="lastname"
-                                    id="lastname"
-                                    autoComplete="family-name"
-                                    placeholder="Enter your last name"
-                                    required
-                                />
-                            </div>
-                            
-                            <div className='form-group'>
-                                <label htmlFor="birthdate" className='form-label'>Date of Birth</label>
-                                <input
-                                    className='form-input'
-                                    name="birthdate"
-                                    id="birthdate"
-                                    autoComplete="bday"
-                                    type="date"
-                                    min="1940-01-01"
-                                    max="2020-01-01"
-                                    required
-                                />
+                            <div className='form-grid'>
+                                <div className='form-column'>
+                                    <div className='form-group'>
+                                        <label htmlFor="firstname" className='form-label'>First Name</label>
+                                        <input
+                                            className='form-input'
+                                            name="firstname"
+                                            id="firstname"
+                                            autoComplete="given-name"
+                                            placeholder="Enter your first name"
+                                            required
+                                        />
+                                    </div>
+                                    
+                                    <div className='form-group'>
+                                        <label htmlFor="middlename" className='form-label'>Middle Name (Optional)</label>
+                                        <input
+                                            className='form-input'
+                                            name="middlename"
+                                            id="middlename"
+                                            autoComplete="additional-name"
+                                            placeholder="Enter your middle name"
+                                        />
+                                    </div>
+                                </div>
+                                
+                                <div className='form-column'>
+                                    <div className='form-group'>
+                                        <label htmlFor="lastname" className='form-label'>Last Name</label>
+                                        <input
+                                            className='form-input'
+                                            name="lastname"
+                                            id="lastname"
+                                            autoComplete="family-name"
+                                            placeholder="Enter your last name"
+                                            required
+                                        />
+                                    </div>
+                                    
+                                    <div className='form-group'>
+                                        <label htmlFor="birthdate" className='form-label'>Date of Birth</label>
+                                        <input
+                                            className='form-input'
+                                            name="birthdate"
+                                            id="birthdate"
+                                            autoComplete="bday"
+                                            type="date"
+                                            min="1940-01-01"
+                                            max="2020-01-01"
+                                            required
+                                        />
+                                    </div>
+                                </div>
                             </div>
                             
                             <div className='form-actions'>
@@ -224,52 +289,58 @@ export default function Registration() {
 
                     {currentSection === Section.Address && (
                         <form action={applyFormData}>
-                            <div className='form-group'>
-                                <label htmlFor="streetadr" className='form-label'>Street Address</label>
-                                <input
-                                    className='form-input'
-                                    name="streetadr"
-                                    id="streetadr"
-                                    autoComplete="street-address"
-                                    placeholder="Enter your street address"
-                                    required
-                                />
-                            </div>
-                            
-                            <div className='form-group'>
-                                <label htmlFor="cityadr" className='form-label'>City</label>
-                                <input
-                                    className='form-input'
-                                    name="cityadr"
-                                    id="cityadr"
-                                    autoComplete="address-level2"
-                                    placeholder="Enter your city"
-                                    required
-                                />
-                            </div>
-                            
-                            <div className='form-group'>
-                                <label htmlFor="stateadr" className='form-label'>State/Province</label>
-                                <input
-                                    className='form-input'
-                                    name="stateadr"
-                                    id="stateadr"
-                                    autoComplete="address-level1"
-                                    placeholder="Enter your state or province"
-                                    required
-                                />
-                            </div>
-                            
-                            <div className='form-group'>
-                                <label htmlFor="countryadr" className='form-label'>Country</label>
-                                <input
-                                    className='form-input'
-                                    name="countryadr"
-                                    id="countryadr"
-                                    autoComplete="country-name"
-                                    placeholder="Enter your country"
-                                    required
-                                />
+                            <div className='form-grid'>
+                                <div className='form-column'>
+                                    <div className='form-group'>
+                                        <label htmlFor="streetadr" className='form-label'>Street Address</label>
+                                        <input
+                                            className='form-input'
+                                            name="streetadr"
+                                            id="streetadr"
+                                            autoComplete="street-address"
+                                            placeholder="Enter your street address"
+                                            required
+                                        />
+                                    </div>
+                                    
+                                    <div className='form-group'>
+                                        <label htmlFor="cityadr" className='form-label'>City</label>
+                                        <input
+                                            className='form-input'
+                                            name="cityadr"
+                                            id="cityadr"
+                                            autoComplete="address-level2"
+                                            placeholder="Enter your city"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                                
+                                <div className='form-column'>
+                                    <div className='form-group'>
+                                        <label htmlFor="stateadr" className='form-label'>State/Province</label>
+                                        <input
+                                            className='form-input'
+                                            name="stateadr"
+                                            id="stateadr"
+                                            autoComplete="address-level1"
+                                            placeholder="Enter your state or province"
+                                            required
+                                        />
+                                    </div>
+                                    
+                                    <div className='form-group'>
+                                        <label htmlFor="countryadr" className='form-label'>Country</label>
+                                        <input
+                                            className='form-input'
+                                            name="countryadr"
+                                            id="countryadr"
+                                            autoComplete="country-name"
+                                            placeholder="Enter your country"
+                                            required
+                                        />
+                                    </div>
+                                </div>
                             </div>
                             
                             <div className='form-actions'>
@@ -394,6 +465,36 @@ export default function Registration() {
                     <p>Already have an account? <a href="#" onClick={() => nav("/Login")}>Sign in here</a></p>
                 </div>
             </div>
+
+            {/* Terms and Conditions Modal */}
+            {showTermsModal && (
+                <div className='terms-modal-overlay'>
+                    <div className='terms-modal'>
+                        <div className='terms-modal-header'>
+                            <h2 className='terms-modal-title'>Terms and Conditions</h2>
+                        </div>
+                        <div className='terms-modal-content'>
+                            <p>
+                                This product is designed to provide safe, private, and secure access to therapy and other mental health resources. We are committed to protecting your name, personal information, IP address, and all usage data. While we adhere to industry-standard cybersecurity practices and protocols, no system is completely immune to potential security threats. As such, we cannot guarantee absolute protection against unauthorized access or data breaches.
+                            </p>
+                        </div>
+                        <div className='terms-modal-actions'>
+                            <button 
+                                className='terms-decline-button'
+                                onClick={declineTerms}
+                            >
+                                Decline
+                            </button>
+                            <button 
+                                className='terms-accept-button'
+                                onClick={acceptTerms}
+                            >
+                                Accept & Continue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
