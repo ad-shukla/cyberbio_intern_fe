@@ -1,0 +1,88 @@
+@import '../global.css';
+@import '../colors.css';
+
+.banner {
+    padding-inline: 30px;
+    min-height: var(--banner-height);
+    height: var(--banner-height);
+    background-color: var(--musk);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    color: var(--crust);
+    font-family: var(--font);
+    border: 0;
+    background: transparent;
+}
+
+.buttonsSmall { display: flex; * {
+    font-size: 14pt;
+    margin-inline: 5px;
+    padding: 5px;
+    padding-inline: 10px;
+    border-radius: 20px;
+    &:hover { background: var(--flame); }
+}}
+
+.hacer {
+    width: 100%;
+    flex-shrink: 1;
+}
+.vacer {
+    height: 100%;
+    flex-shrink: 1;
+}
+
+.userbubble {
+    width: calc(var(--banner-height) * 0.6);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 2px solid var(--husk);
+    border-radius: 50%;
+    &:active { background: var(--flicker);};
+}
+
+.sidePane {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+    
+    width:12.5%;
+    height: calc(100vh - var(--banner-height));
+    
+    background-color: var(--crust);
+    border-inline: 1px solid black;
+    
+    transform-origin: right;
+    transition: width 0.2s ease-in;
+    & button {
+        background-color: var(--trust);
+        color: var(--dusk);
+        border-radius: 15px;
+        text-align: right;
+        margin: 2.5%;
+        margin-inline: 20%;
+        font-size: 1.5em;
+        &:hover
+        {
+            transition: background-color 0.15s ease-in;
+            background-color: var(--disgust);
+        }
+    }
+    & * { margin: 0; }
+
+    hr {
+        width:100%;
+        margin: 10px;
+        margin-inline: 0;
+    }
+}
+.mini { width: 0; & *{display: none;} }

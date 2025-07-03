@@ -1,20 +1,16 @@
 :root {
-    /* Primary Colors - Green theme from Figma */
     --primary-green: #7a9b7e;
     --primary-green-dark: #6b8a6f;
     --primary-green-light: #8aab8e;
     
-    /* Secondary Colors */
     --secondary-gray: #d4d4d4;
     --secondary-gray-dark: #b8b8b8;
     --secondary-gray-light: #e8e8e8;
     
-    /* Accent Colors */
     --accent-red: #dc3545;
     --accent-green: #28a745;
     --accent-blue: #007bff;
     
-    /* Neutral Colors */
     --white: #ffffff;
     --gray-50: #f8f9fa;
     --gray-100: #f1f3f4;
@@ -27,24 +23,20 @@
     --gray-800: #343a40;
     --gray-900: #212529;
     
-    /* Background Colors */
     --bg-primary: #ffffff;
     --bg-secondary: #f5f5f5;
     --bg-dark: #2c2c2c;
     --bg-card: #e8e8e8;
     
-    /* Text Colors */
     --text-primary: #333333;
     --text-secondary: #666666;
     --text-muted: #999999;
     --text-white: #ffffff;
     
-    /* Border Colors */
     --border-light: #cccccc;
     --border-medium: #999999;
     --border-dark: #666666;
     
-    /* Shadow Colors */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);

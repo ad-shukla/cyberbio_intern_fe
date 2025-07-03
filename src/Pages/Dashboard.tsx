@@ -194,8 +194,8 @@ export default function Dashboard() {
                                 </svg>
                             </div>
                             <div className='activity-content'>
-                                <p className='activity-title'>Welcome to the platform!</p>
-                                <p className='activity-subtitle'>Your secure therapy journey begins here</p>
+                                <p className='activity-title'>Welcome!</p>
+                                <p className='activity-subtitle'>Your secure mental health journey begins here</p>
                                 <span className='activity-time'>Just now</span>
                             </div>
                         </div>

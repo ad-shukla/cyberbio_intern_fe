@@ -116,18 +116,3 @@
     font-weight: 500;
     font-size: var(--font-size-sm);
 }
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .banner {
-        padding: 0 var(--spacing-4);
-    }
-    
-    .banner-nav {
-        display: none;
-    }
-    
-    .banner-logo {
-        font-size: var(--font-size-base);
-    }
-}

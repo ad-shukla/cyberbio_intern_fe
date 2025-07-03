@@ -1,0 +1,55 @@
+.MatchingParent, .Matching, .matchingFormEntry {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+.Matching {
+    position: relative;
+    top:10%;
+    padding: 5vh;
+    padding-inline: 2.5%;
+    
+    border: 5px var(--crust);
+    border-style: groove;
+    border-radius: 10px;
+    align-self: center;
+
+    background-color: var(--dust);
+}
+
+.claim {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+form
+{
+    width: min-content;
+    align-items: center;
+    white-space: pre;
+    color: var(--dusk);
+    & > div {
+        display: flex;
+        align-items: flex-start;
+    }
+    & .other {
+        width: 100%;
+        margin: 0;
+    }
+    .flex-grid {
+        display: flex;
+        flex-direction: column;
+        label {
+            justify-content: space-between;
+            flex: 1;
+        }
+    }
+    .l {
+        border-right: 2px solid var(--dust);
+    }
+    button {
+        color: var(--dusk);
+    }
+}
