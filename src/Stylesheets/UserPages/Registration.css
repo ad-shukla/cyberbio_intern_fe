@@ -11,6 +11,7 @@
     padding: var(--spacing-8) var(--spacing-4);
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .registration-container::before {
@@ -33,10 +34,11 @@
     border: 1px solid var(--border-light);
     padding: var(--spacing-10);
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
     position: relative;
     z-index: 1;
     animation: fadeInUp 0.6s ease-out;
+    margin: 0 auto;
 }
 
 .registration-header {
@@ -81,6 +83,7 @@
 
 .form-section {
     animation: slideIn 0.4s ease-out;
+    width: 100%;
 }
 
 .form-grid {
@@ -88,16 +91,19 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-6);
     align-items: start;
+    width: 100%;
 }
 
 .form-column {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-6);
+    width: 100%;
 }
 
 .form-group {
     margin-bottom: var(--spacing-6);
+    width: 100%;
 }
 
 .form-label {
@@ -106,6 +112,7 @@
     color: var(--text-primary);
     margin-bottom: var(--spacing-2);
     font-size: var(--font-size-sm);
+    text-align: left;
 }
 
 .form-input {
@@ -116,11 +123,13 @@
     font-size: var(--font-size-base);
     transition: all var(--transition-fast);
     background: var(--white);
+    box-sizing: border-box;
 }
 
 .form-input:focus {
     border-color: var(--primary-green);
     box-shadow: 0 0 0 3px rgba(122, 155, 126, 0.1);
+    outline: none;
 }
 
 .form-input:invalid {
@@ -163,6 +172,7 @@
     grid-column: 1 / -1;
     text-align: center;
     margin-bottom: var(--spacing-4);
+    width: 100%;
 }
 
 .profile-picture-upload {
@@ -220,6 +230,7 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-4);
     margin-bottom: var(--spacing-8);
+    width: 100%;
 }
 
 .user-type-card {
@@ -272,6 +283,7 @@
     justify-content: flex-end;
     margin-top: var(--spacing-8);
     grid-column: 1 / -1;
+    width: 100%;
 }
 
 .btn-secondary {
@@ -487,6 +499,7 @@
     
     .registration-card {
         padding: var(--spacing-6);
+        max-width: 100%;
     }
     
     .form-grid {
@@ -514,5 +527,11 @@
     
     .terms-modal-actions {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-card {
+        padding: var(--spacing-4);
     }
 }
