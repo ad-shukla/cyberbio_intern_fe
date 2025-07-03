@@ -12,6 +12,7 @@
     position: relative;
     overflow: hidden;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .registration-container::before {
@@ -34,16 +35,19 @@
     border: 1px solid var(--border-light);
     padding: var(--spacing-10);
     width: 100%;
-    max-width: 800px;
+    max-width: none;
+    min-width: 90vw;
     position: relative;
     z-index: 1;
     animation: fadeInUp 0.6s ease-out;
-    margin: 0 auto;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .registration-header {
     text-align: center;
     margin-bottom: var(--spacing-8);
+    width: 100%;
 }
 
 .registration-title {
@@ -67,6 +71,7 @@
     justify-content: center;
     margin-bottom: var(--spacing-8);
     gap: var(--spacing-2);
+    width: 100%;
 }
 
 .progress-step {
@@ -84,14 +89,16 @@
 .form-section {
     animation: slideIn 0.4s ease-out;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-6);
+    gap: var(--spacing-8);
     align-items: start;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .form-column {
@@ -99,11 +106,13 @@
     flex-direction: column;
     gap: var(--spacing-6);
     width: 100%;
+    box-sizing: border-box;
 }
 
 .form-group {
     margin-bottom: var(--spacing-6);
     width: 100%;
+    box-sizing: border-box;
 }
 
 .form-label {
@@ -138,6 +147,7 @@
 
 .password-strength {
     margin-top: var(--spacing-3);
+    width: 100%;
 }
 
 .strength-label {
@@ -173,6 +183,7 @@
     text-align: center;
     margin-bottom: var(--spacing-4);
     width: 100%;
+    box-sizing: border-box;
 }
 
 .profile-picture-upload {
@@ -180,6 +191,7 @@
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-4);
+    width: 100%;
 }
 
 .profile-picture-preview {
@@ -231,6 +243,7 @@
     gap: var(--spacing-4);
     margin-bottom: var(--spacing-8);
     width: 100%;
+    box-sizing: border-box;
 }
 
 .user-type-card {
@@ -241,6 +254,7 @@
     cursor: pointer;
     transition: all var(--transition-fast);
     background: var(--white);
+    box-sizing: border-box;
 }
 
 .user-type-card:hover {
@@ -284,6 +298,7 @@
     margin-top: var(--spacing-8);
     grid-column: 1 / -1;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .btn-secondary {
@@ -349,6 +364,7 @@
     margin-top: var(--spacing-6);
     padding-top: var(--spacing-6);
     border-top: 1px solid var(--border-light);
+    width: 100%;
 }
 
 .login-link a {
@@ -499,11 +515,12 @@
     
     .registration-card {
         padding: var(--spacing-6);
-        max-width: 100%;
+        min-width: 95vw;
     }
     
     .form-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-4);
     }
     
     .user-type-selection {
@@ -533,5 +550,6 @@
 @media (max-width: 480px) {
     .registration-card {
         padding: var(--spacing-4);
+        min-width: 98vw;
     }
 }
