@@ -11,6 +11,7 @@
     padding: var(--spacing-8) var(--spacing-4);
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .login-container::before {
@@ -33,10 +34,11 @@
     border: 1px solid var(--border-light);
     padding: var(--spacing-10);
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     position: relative;
     z-index: 1;
     animation: fadeInUp 0.6s ease-out;
+    margin: 0 auto;
 }
 
 .login-header {
@@ -64,18 +66,21 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-6);
+    width: 100%;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-2);
+    width: 100%;
 }
 
 .form-label {
     font-weight: 600;
     color: var(--text-primary);
     font-size: var(--font-size-sm);
+    text-align: left;
 }
 
 .form-input {
@@ -86,11 +91,13 @@
     transition: all var(--transition-fast);
     background: var(--white);
     width: 100%;
+    box-sizing: border-box;
 }
 
 .form-input:focus {
     border-color: var(--primary-green);
     box-shadow: 0 0 0 3px rgba(122, 155, 126, 0.1);
+    outline: none;
 }
 
 .form-input::placeholder {
@@ -102,6 +109,7 @@
     flex-direction: column;
     gap: var(--spacing-4);
     margin-top: var(--spacing-2);
+    width: 100%;
 }
 
 .btn-primary {
@@ -117,6 +125,7 @@
     box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .btn-primary::before {
@@ -149,6 +158,7 @@
     font-size: var(--font-size-base);
     cursor: pointer;
     transition: all var(--transition-fast);
+    width: 100%;
 }
 
 .btn-secondary:hover {
@@ -235,9 +245,16 @@
     
     .login-card {
         padding: var(--spacing-6);
+        max-width: 100%;
     }
     
     .login-title {
         font-size: var(--font-size-2xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: var(--spacing-4);
     }
 }
